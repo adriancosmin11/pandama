@@ -19,12 +19,35 @@ export default function Layout() {
 
     return (
         <div className="min-h-screen relative overflow-x-hidden">
-            {/* Background Pattern */}
-            <div className="fixed inset-0 panda-watermark pointer-events-none z-0" />
+            {/* Animated Background */}
+            <div className="fixed inset-0 pointer-events-none z-0">
+                {/* Animated Cyber Grid */}
+                <div className="absolute inset-0 grid-cyber" />
 
-            {/* Background Glows */}
-            <div className="fixed top-1/4 -right-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full z-0 pointer-events-none" />
-            <div className="fixed bottom-1/4 -left-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full z-0 pointer-events-none" />
+                {/* Dot Pattern */}
+                <div className="absolute inset-0 panda-watermark" />
+
+                {/* Floating Orb 1 - Green, top-right */}
+                <div
+                    className="absolute top-1/4 right-[10%] w-[500px] h-[500px] rounded-full bg-primary/8 blur-[150px]"
+                    style={{ animation: 'float-orb-1 20s ease-in-out infinite' }}
+                />
+
+                {/* Floating Orb 2 - Purple, bottom-left */}
+                <div
+                    className="absolute bottom-1/4 left-[5%] w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[130px]"
+                    style={{ animation: 'float-orb-2 25s ease-in-out infinite' }}
+                />
+
+                {/* Floating Orb 3 - Mixed, center */}
+                <div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full blur-[120px]"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(204,255,0,0.06), rgba(168,85,247,0.06))',
+                        animation: 'float-orb-3 18s ease-in-out infinite',
+                    }}
+                />
+            </div>
 
             {/* Navigation */}
             <nav className="fixed top-0 w-full z-50 px-6 py-4">
