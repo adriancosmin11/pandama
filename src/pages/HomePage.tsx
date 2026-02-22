@@ -44,7 +44,7 @@ export default function HomePage() {
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.1 }}
-                        className="text-6xl md:text-8xl lg:text-[120px] font-bold tracking-tighter leading-[0.85] mb-8 uppercase italic"
+                        className="text-5xl md:text-8xl lg:text-[120px] font-bold tracking-tighter leading-[0.9] mb-8 uppercase italic py-2"
                     >
                         PANDAMA:<br />
                         <span className="text-primary drop-shadow-[0_0_30px_rgba(204,255,0,0.4)]">LEVEL UP</span>

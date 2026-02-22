@@ -115,19 +115,18 @@ export default function Layout() {
                 <Outlet />
             </main>
 
-            {/* Footer */}
             <footer className="relative z-10 px-6 pb-10">
-                <div className="max-w-7xl mx-auto pt-20 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8 opacity-50">
+                <div className="max-w-7xl mx-auto pt-20 border-t border-white/10 flex flex-col items-center gap-6 md:flex-row md:justify-between md:gap-8 opacity-50">
                     <Link to="/" className="flex items-center gap-2">
                         <Hexagon className="text-primary w-5 h-5" />
                         <span className="font-bold tracking-tighter uppercase">PANDAMA</span>
                     </Link>
-                    <div className="flex gap-8 text-xs font-medium uppercase tracking-widest">
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs font-medium uppercase tracking-widest">
                         {['Livrare', 'Termeni', 'Confidențialitate', 'Contact'].map(item => (
                             <a key={item} className="hover:text-primary transition-colors" href="#">{item}</a>
                         ))}
                     </div>
-                    <p className="text-xs font-mono">© 2026 PANDAADS. TOATE DREPTURILE REZERVATE.</p>
+                    <p className="text-xs font-mono text-center">© 2026 PANDAMA LABS. TOATE DREPTURILE REZERVATE.</p>
                 </div>
             </footer>
 
