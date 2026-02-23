@@ -54,7 +54,7 @@
   }
 
   .product-card {
-    @apply bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center shadow-xl hover:-translate-y-1 transition-all backdrop-blur-md;
+    @apply bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center shadow-2xl hover:-translate-y-1 transition-all backdrop-blur-md;
   }
 
   .product-card h3 {
@@ -66,7 +66,7 @@
   }
 
   .btn-details {
-    @apply bg-primary text-white px-6 py-2 rounded-xl text-[10px] font-black w-full uppercase flex items-center justify-center gap-1 transition-all shadow-[0_10px_20px_rgba(76, 175, 80, 0.2)] hover:scale-[1.02];
+    @apply bg-primary text-white px-6 py-2 rounded-xl text-[10px] font-black w-full uppercase flex items-center justify-center gap-1 transition-all shadow-lg hover:shadow-primary/20 hover:scale-[1.02];
   }
 }
 

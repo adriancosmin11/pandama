@@ -101,50 +101,6 @@ export default function Layout() {
                     </div>
                 </div>
 
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                    {mobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 1.1 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.05 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-3xl border-l border-white/5 flex flex-col justify-start items-center p-10 pt-32"
-                        >
-                            <button
-                                className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                <X className="w-10 h-10 stroke-[1.2]" />
-                            </button>
-
-                            <div className="flex flex-col items-center gap-10">
-                                {navItems.map((item, idx) => (
-                                    <motion.div
-                                        key={item.label}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: idx * 0.1 }}
-                                    >
-                                        <Link
-                                            to={item.path}
-                                            className="text-4xl font-black uppercase tracking-tighter italic hover:text-primary transition-colors text-white"
-                                            onClick={() => setMobileMenuOpen(false)}
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            <div className="absolute bottom-12 flex gap-8">
-                                <Instagram className="w-6 h-6 text-white/40" />
-                                <Search className="w-6 h-6 text-white/40" />
-                                <User className="w-6 h-6 text-white/40" />
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </nav>
 
             <main className="relative z-10 min-h-[calc(100vh-80px-300px)]">
@@ -179,6 +135,58 @@ export default function Layout() {
             </footer>
 
             {/* Cart Drawer */}
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-3xl overflow-y-auto"
+                    >
+                        <motion.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="min-h-full w-full flex flex-col justify-start items-center p-10 pt-32 relative bg-black/20"
+                        >
+                            <button
+                                className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <X className="w-10 h-10 stroke-[1.2]" />
+                            </button>
+
+                            <div className="flex flex-col items-center gap-8">
+                                {navItems.map((item, idx) => (
+                                    <motion.div
+                                        key={item.label}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            className="text-4xl font-black uppercase tracking-tighter italic hover:text-primary transition-colors text-white text-center"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            <div className="mt-16 flex gap-8">
+                                <Instagram className="w-6 h-6 text-white/40 hover:text-primary transition-colors" />
+                                <Search className="w-6 h-6 text-white/40 hover:text-primary transition-colors" />
+                                <User className="w-6 h-6 text-white/40 hover:text-primary transition-colors" />
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <CartDrawer />
         </div>
     );
