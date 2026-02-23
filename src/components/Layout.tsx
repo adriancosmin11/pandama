@@ -109,7 +109,7 @@ export default function Layout() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 1.05 }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex flex-col justify-center items-center p-10"
+                            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-3xl border-l border-white/5 flex flex-col justify-center items-center p-10"
                         >
                             <button
                                 className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors"
