@@ -1,127 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
 
-  --color-primary: #ccff00;
-  --color-secondary: #a855f7;
-  --color-background-dark: #0a0a0a;
-  --color-card-dark: #141414;
+  --color-primary: #4CAF50;
+  /* Vibrant Green for buttons */
+  --color-primary-dark: #2F5233;
+  /* Forest Green for mist/accents */
+  --color-accent: #EAB308;
+  /* Gold/Yellow for "Flow" text */
+  --color-background: #000000;
+  --color-card: #FFFFFF;
 
-  --radius-DEFAULT: 1rem;
-  --radius-lg: 2rem;
-  --radius-xl: 3rem;
+  --radius-DEFAULT: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
 }
 
 @layer base {
   body {
-    @apply bg-background-dark text-white font-sans selection:bg-primary selection:text-black;
+    @apply bg-background text-white font-sans selection:bg-primary selection:text-white;
   }
 }
 
 @layer components {
-  .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  .btn-primary {
+    @apply bg-gradient-to-b from-primary to-[#388E3C] text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:brightness-110 active:scale-95 transition-all text-sm uppercase tracking-wider;
   }
 
-  .neon-glow-primary {
-    box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+  .btn-outline {
+    @apply border-2 border-white/20 text-white font-bold px-8 py-3 rounded-lg hover:bg-white/10 active:scale-95 transition-all text-sm uppercase tracking-wider;
   }
 
-  .neon-glow-purple {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  .nav-link {
+    @apply text-sm font-medium text-white/80 hover:text-white transition-colors relative py-2;
   }
 
-  .panda-watermark {
-    background-image: radial-gradient(circle at 2px 2px, rgba(204, 255, 0, 0.03) 1px, transparent 0);
-    background-size: 40px 40px;
+  .nav-link-active {
+    @apply text-white;
   }
 
-  .grid-cyber {
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: grid-pulse 8s ease-in-out infinite, grid-drift 30s linear infinite;
-  }
-}
-
-@keyframes grid-pulse {
-
-  0%,
-  100% {
-    opacity: 0.3;
+  .nav-link-active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
   }
 
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes grid-drift {
-  0% {
-    background-position: 0 0;
+  .mist-overlay {
+    background: radial-gradient(circle at 50% 50%, rgba(76, 175, 80, 0.15) 0%, transparent 70%);
+    @apply absolute inset-0 pointer-events-none;
   }
 
-  100% {
-    background-position: 60px 60px;
+  .product-card {
+    @apply bg-white rounded-lg p-6 flex flex-col items-center text-center shadow-xl hover:-translate-y-1 transition-transform;
+  }
+
+  .product-card h3 {
+    @apply text-black font-bold text-lg mb-2;
+  }
+
+  .product-card .price {
+    @apply text-slate-500 text-sm mb-4;
+  }
+
+  .btn-details {
+    @apply bg-[#2F5233] text-white px-4 py-2 rounded text-xs font-bold w-full uppercase flex items-center justify-center gap-1;
   }
 }
 
-@keyframes float-orb-1 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  25% {
-    transform: translate(80px, -120px) scale(1.1);
-  }
-
-  50% {
-    transform: translate(-60px, -80px) scale(0.9);
-  }
-
-  75% {
-    transform: translate(40px, 60px) scale(1.05);
-  }
-}
-
-@keyframes float-orb-2 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  25% {
-    transform: translate(-100px, 80px) scale(1.15);
-  }
-
-  50% {
-    transform: translate(70px, 120px) scale(0.85);
-  }
-
-  75% {
-    transform: translate(-50px, -70px) scale(1.1);
-  }
-}
-
-@keyframes float-orb-3 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  33% {
-    transform: translate(60px, -100px) scale(1.2);
-  }
-
-  66% {
-    transform: translate(-80px, 50px) scale(0.9);
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[#FACC15] to-[#EAB308] bg-clip-text text-transparent;
   }
 }

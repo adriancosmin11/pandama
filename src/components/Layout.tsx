@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Search, ShoppingCart, Hexagon, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
+import mistBg from '@/src/assets/mist-bg.png';
 
 export default function Layout() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,120 +12,109 @@ export default function Layout() {
     const { totalItems, toggleCart } = useCart();
 
     const navItems = [
-        { label: 'Shop', path: '/shop' },
-        { label: 'Echipa Pro', path: '/pro-team' },
-        { label: 'Lansări', path: '/drops' },
-        { label: 'Arhivă', path: '/archive' },
+        { label: 'Acasă', path: '/' },
+        { label: 'Kendame', path: '/shop' },
+        { label: 'Accesorii', path: '/accessories' },
+        { label: 'Ghiduri & Tricks', path: '/guides' },
+        { label: 'Comunitate', path: '/community' },
     ];
 
     return (
-        <div className="min-h-screen relative overflow-x-hidden">
-            {/* Animated Background */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                {/* Animated Cyber Grid */}
-                <div className="absolute inset-0 grid-cyber" />
-
-                {/* Dot Pattern */}
-                <div className="absolute inset-0 panda-watermark" />
-
-                {/* Floating Orb 1 - Green, top-right */}
-                <div
-                    className="absolute top-1/4 right-[10%] w-[500px] h-[500px] rounded-full bg-primary/8 blur-[150px]"
-                    style={{ animation: 'float-orb-1 20s ease-in-out infinite' }}
+        <div className="min-h-screen relative bg-black selection:bg-primary selection:text-white">
+            {/* Background Mist Effect */}
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+                <img
+                    src={mistBg}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-screen scale-110"
                 />
-
-                {/* Floating Orb 2 - Purple, bottom-left */}
-                <div
-                    className="absolute bottom-1/4 left-[5%] w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[130px]"
-                    style={{ animation: 'float-orb-2 25s ease-in-out infinite' }}
-                />
-
-                {/* Floating Orb 3 - Mixed, center */}
-                <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full blur-[120px]"
+                <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] opacity-15"
                     style={{
-                        background: 'radial-gradient(circle, rgba(204,255,0,0.06), rgba(168,85,247,0.06))',
-                        animation: 'float-orb-3 18s ease-in-out infinite',
+                        background: 'radial-gradient(circle at 50% 30%, #2F5233 0%, transparent 60%)',
+                        filter: 'blur(100px)'
                     }}
                 />
             </div>
 
             {/* Navigation */}
-            <nav className="fixed top-0 w-full z-50 px-6 py-4">
-                <motion.div
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    className="max-w-7xl mx-auto flex items-center justify-between glass rounded-full px-8 py-3"
-                >
-                    <Link to="/" className="flex items-center gap-2">
-                        <Hexagon className="text-primary w-8 h-8 fill-primary/20" />
-                        <span className="text-2xl font-bold tracking-tighter text-white uppercase">PANDAMA</span>
+            <nav className="sticky top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 py-4">
+                <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                    {/* Logo Section */}
+                    <Link to="/" className="flex items-center gap-4 shrink-0 group">
+                        <div className="w-12 h-12 relative flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
+                            <div className="w-8 h-8 flex items-center justify-center">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white group-hover:text-primary transition-colors">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" fill="currentColor" opacity="0.2" />
+                                    <path d="M12 4c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm0 14c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z" fill="currentColor" />
+                                    <path d="M8 10a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2zm-4 3c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="flex flex-col leading-none">
+                            <span className="text-2xl font-black tracking-tighter text-white uppercase italic group-hover:text-primary transition-colors">PANDAMA</span>
+                            <span className="text-[8px] font-black tracking-[0.3em] text-white/40 uppercase mt-0.5">Premium Kendamas</span>
+                        </div>
                     </Link>
 
-                    <div className="hidden md:flex items-center gap-10">
+                    {/* Centered Desktop Menu */}
+                    <div className="hidden lg:flex items-center gap-8">
                         {navItems.map((item) => (
                             <Link
                                 key={item.label}
                                 to={item.path}
-                                className={`text-sm font-medium transition-colors uppercase tracking-wider ${location.pathname === item.path
-                                    ? 'text-primary'
-                                    : 'hover:text-primary text-white/70'
-                                    }`}
+                                className={`nav-link ${location.pathname === item.path ? 'nav-link-active' : ''}`}
                             >
                                 {item.label}
+                                {location.pathname === item.path && (
+                                    <motion.div layoutId="nav-underline" className="absolute bottom-0 left-0 w-full h-[2px] bg-primary" />
+                                )}
                             </Link>
                         ))}
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <button className="p-2 hover:bg-white/10 rounded-full transition-all">
-                            <Search className="w-5 h-5" />
+                    {/* Action Icons */}
+                    <div className="flex items-center gap-5">
+                        <button className="text-white hover:text-primary transition-colors">
+                            <Search className="w-6 h-6 stroke-[1.5]" />
                         </button>
-                        <div className="relative">
-                            <button
-                                onClick={toggleCart}
-                                className="p-2 bg-primary text-black rounded-full flex items-center justify-center neon-glow-primary"
-                            >
-                                <ShoppingCart className="w-5 h-5" />
-                            </button>
+                        <button className="text-white hover:text-primary transition-colors">
+                            <User className="w-6 h-6 stroke-[1.5]" />
+                        </button>
+                        <button onClick={toggleCart} className="text-white hover:text-primary transition-colors relative">
+                            <ShoppingCart className="w-6 h-6 stroke-[1.5]" />
                             {totalItems > 0 && (
                                 <motion.span
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
-                                    className="absolute -top-1 -right-1 bg-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white"
+                                    className="absolute -top-2 -right-2 bg-primary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center text-white"
                                 >
                                     {totalItems}
                                 </motion.span>
                             )}
-                        </div>
-
-
+                        </button>
                         <button
-                            className="md:hidden p-2 hover:bg-white/10 rounded-full transition-all"
+                            className="lg:hidden text-white"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
-                            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="md:hidden mt-2 glass rounded-2xl p-6 max-w-7xl mx-auto"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/5 mt-4"
                     >
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col p-6 gap-6">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.label}
                                     to={item.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`text-lg font-medium transition-colors uppercase tracking-wider py-2 ${location.pathname === item.path
-                                        ? 'text-primary'
-                                        : 'hover:text-primary text-white/70'
-                                        }`}
+                                    className={`text-lg font-bold uppercase tracking-widest ${location.pathname === item.path ? 'text-primary' : 'text-white'}`}
                                 >
                                     {item.label}
                                 </Link>
@@ -134,22 +124,34 @@ export default function Layout() {
                 )}
             </nav>
 
-            <main className="relative z-10 pt-32 pb-20 px-6">
+            <main className="relative z-10 min-h-[calc(100vh-80px-300px)]">
                 <Outlet />
             </main>
 
-            <footer className="relative z-10 px-6 pb-10">
-                <div className="max-w-7xl mx-auto pt-20 border-t border-white/10 flex flex-col items-center gap-6 md:flex-row md:justify-between md:gap-8 opacity-50">
-                    <Link to="/" className="flex items-center gap-2">
-                        <Hexagon className="text-primary w-5 h-5" />
-                        <span className="font-bold tracking-tighter uppercase">PANDAMA</span>
-                    </Link>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs font-medium uppercase tracking-widest">
-                        {['Livrare', 'Termeni', 'Confidențialitate', 'Contact'].map(item => (
-                            <a key={item} className="hover:text-primary transition-colors" href="#">{item}</a>
-                        ))}
+            {/* Premium Minimalist Footer */}
+            <footer className="relative z-10 bg-black pt-20 pb-10 border-t border-white/5">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+                        <Link to="/" className="flex items-center gap-3 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                            <img src="https://lh3.googleusercontent.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" alt="Panda Logo" className="w-8 h-8 object-contain" />
+                            <span className="font-extrabold tracking-tighter uppercase italic text-sm">PANDAMA</span>
+                        </Link>
+
+                        <div className="flex flex-wrap justify-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">
+                            {[
+                                { label: 'Livrare', path: '/shipping' },
+                                { label: 'Termeni', path: '/terms' },
+                                { label: 'Confidențialitate', path: '/privacy' },
+                                { label: 'Contact', path: '/contact' },
+                            ].map(item => (
+                                <Link key={item.label} to={item.path} className="hover:text-primary transition-colors">{item.label}</Link>
+                            ))}
+                        </div>
+
+                        <p className="text-[10px] font-medium text-white/20 uppercase tracking-widest">
+                            © 2026 PANDAMA. TOATE DREPTURILE REZERVATE.
+                        </p>
                     </div>
-                    <p className="text-xs font-mono text-center">© 2026 PANDAMA LABS. TOATE DREPTURILE REZERVATE.</p>
                 </div>
             </footer>
 

@@ -1,3 +1,8 @@
+import bestSellers1 from '@/src/assets/best-sellers1.png';
+import bestSellers2 from '@/src/assets/best-sellers2.png';
+import bestSellers3 from '@/src/assets/best-sellers3.png';
+import bestSellers4 from '@/src/assets/best-sellers4.png';
+
 export interface Product {
   id: string;
   name: string;
@@ -18,7 +23,7 @@ export const PRODUCTS: Product[] = [
     price: 124.00,
     originalPrice: 159.00,
     description: 'Seria emblematică cu finisaj carbon mat și corzi din mătase violetă.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDB5A_3qQjckCcr8r5B3VYC_bHTv5zxfILtcTvqyMlU6cUoEaefG-iyKd_4juMQDObgGoU80XqGEUwZtFoqWe17m8HncnJVUr082sKcsyeq2A9MVtFXxKiMqymr_y2lQoYm7p7jhASb6YHHnOOxVOVvBV-umDbRq9mZkNaIPNknC6lyRcaQsdSaPs6ba4WtLtdyN_Z4Rgm8xzQATfvx8_H5uLhPV9LZiPcDVk-NUWyQY57-rTA-4dkpudqPyFrHTJ5HyuJMUH30HJIc',
+    image: bestSellers1,
     category: 'Legendary',
     sku: 'PN-VDS-04',
     specs: ['Arțar Grad A', 'Vopsea Aderență', 'Tehnologie Anti-Deformare', 'Coardă cu Rulment']
@@ -28,7 +33,7 @@ export const PRODUCTS: Product[] = [
     name: 'NEON KATANA',
     price: 89.00,
     description: 'Ediție limitată cu design cyberpunk și strălucire reactivă.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB0U_GH6YVeYjZXJ1D7JLIjeutwAeRo0mJIvmdtY5n2Dq628THmxiWoHRPlIot_1Ky3bCDboFbkI52IFeVPCWHlUVr8kvNUswQ9rdTMYCl02EE_IPO_cuiLQUAwMoD5yE-FqA06KuXyeK_IIS0KNLpeVlSve8F8DfA1QxaN35G0UeunN37RYs0IxaYsEWNSjlrIav64oZ_jjJ4gSsGmV3MUSjDNeZicJ8tqzz9CkhgnOxgEdcCcxQP5penWJoTNeFUty2qwbeCliTB8',
+    image: bestSellers2,
     category: 'Rare',
     sku: 'PN-NKT-02',
     specs: ['Strălucire Reactivă', 'Coardă Tensiune Înaltă', 'Echilibru de Precizie']
@@ -38,7 +43,7 @@ export const PRODUCTS: Product[] = [
     name: 'CHROME BAMBOO',
     price: 75.00,
     description: 'Sculptură minimalistă din lemn fuzionată cu performanță modernă.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyYib6r47gUtIWuY4yJNcss-oG_VdVLAnnRsJvlGqezQhfsbkoR2BOfswBbM_Q5XMztmjLB8rbbiNKpT3SzRHnRUyZHgTm1UVJtV0mYchHTUv3kGu2ZjjbAeJmLfWmJeAlSvzDpbzMX4ITUUAXLbUqxkXRap9-KiXHu7LLhPbOxumb3OV3JAJZDdd0qYSZj9Rrh0VKY6Qt_ksU87ec3dPBSJRy-_mtPnrzfIHxty01BWU8YRQ_dM7jbeZZIQVQzF3HO8FumyXC1D4z',
+    image: bestSellers3,
     category: 'Standard',
     sku: 'PN-CBM-01',
     specs: ['Sursă Sustenabilă', 'Finisaj Natural', 'Ultraușor']
@@ -48,7 +53,7 @@ export const PRODUCTS: Product[] = [
     name: 'SPIRIT BLADE',
     price: 95.00,
     description: 'Serie ultraușoară pentru joc rapid și dinamic.',
-    image: '',
+    image: bestSellers4,
     category: 'Limited',
     sku: 'PN-SBT-03',
     specs: ['Ultraușor', 'Formă Aerodinamică']
