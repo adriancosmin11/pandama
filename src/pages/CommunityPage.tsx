@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Instagram, Users, MessageCircle } from 'lucide-react';
+import { Instagram, Users, MessageCircle, ChevronRight } from 'lucide-react';
 
 export default function CommunityPage() {
     return (
@@ -38,11 +38,15 @@ export default function CommunityPage() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white p-16 rounded-3xl text-black shadow-2xl flex flex-col items-center text-center group transition-transform hover:scale-[1.02]"
+                    className="bg-white/5 border border-white/10 p-16 rounded-[2.5rem] text-white shadow-2xl flex flex-col items-center text-center group transition-all duration-500 hover:scale-[1.02] backdrop-blur-3xl relative overflow-hidden"
                 >
-                    <MessageCircle className="w-16 h-16 mb-8 text-[#2F5233] group-hover:scale-110 transition-transform" />
-                    <h3 className="text-3xl font-black uppercase italic tracking-tighter mb-4">DISCORD SERVER</h3>
-                    <p className="text-black/40 text-xs font-bold uppercase tracking-widest">DISCUTĂ CU JUCĂTORI PRO ȘI AFLĂ TIPS & TRICKS</p>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <MessageCircle className="w-16 h-16 mb-8 text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 stroke-[1.2]" />
+                    <h3 className="text-4xl font-black uppercase italic tracking-tighter mb-4 group-hover:text-primary transition-colors">DISCORD SERVER</h3>
+                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] mb-10">LOCUL UNDE COMUNITATEA SE ÎNTÂLNEȘTE</p>
+                    <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] py-3 px-6 bg-white/5 border border-white/10 rounded-full group-hover:bg-primary group-hover:border-primary transition-all">
+                        ALĂTURĂ-TE ACUM <ChevronRight className="w-4 h-4" />
+                    </div>
                 </motion.a>
             </div>
         </section>

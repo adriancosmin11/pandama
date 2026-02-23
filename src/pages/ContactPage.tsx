@@ -35,26 +35,26 @@ export default function ContactPage() {
                 </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-5 gap-12 items-start">
+            <div className="grid lg:grid-cols-5 gap-16 items-start">
                 {/* Contact Info */}
                 <motion.div
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.1 }}
-                    className="lg:col-span-2 space-y-6"
+                    className="lg:col-span-2 space-y-8"
                 >
                     {contactInfo.map((item) => (
                         <a
                             key={item.label}
                             href={item.href}
-                            className="bg-white border border-white/5 p-8 rounded-2xl flex items-center gap-6 group hover:translate-x-2 transition-transform shadow-xl"
+                            className="bg-white/5 border border-white/10 p-10 rounded-3xl flex items-center gap-8 group hover:translate-x-3 transition-all duration-500 shadow-2xl backdrop-blur-md"
                         >
-                            <div className="w-14 h-14 bg-[#F5F5F5] rounded-xl flex items-center justify-center group-hover:bg-[#2F5233] transition-colors">
-                                <item.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" />
+                            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                                <item.icon className="w-8 h-8 text-white group-hover:text-white transition-colors stroke-[1.2]" />
                             </div>
                             <div>
-                                <div className="text-[10px] text-black/20 uppercase tracking-[0.2em] font-black mb-1">{item.label}</div>
-                                <div className="font-bold text-black uppercase tracking-tight">{item.value}</div>
+                                <div className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-black mb-1.5">{item.label}</div>
+                                <div className="font-extrabold text-white text-lg uppercase tracking-tight">{item.value}</div>
                             </div>
                         </a>
                     ))}
@@ -67,70 +67,74 @@ export default function ContactPage() {
                     transition={{ delay: 0.2 }}
                     className="lg:col-span-3"
                 >
-                    <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-10 md:p-16 shadow-2xl space-y-8 text-black">
-                        <div className="flex items-center gap-4 mb-4">
-                            <MessageSquare className="w-6 h-6 text-[#2F5233]" />
-                            <h2 className="text-2xl font-black uppercase tracking-widest italic">TRIMITE UN MESAJ</h2>
+                    <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 rounded-[2.5rem] p-12 md:p-20 shadow-[0_40px_100px_rgba(0,0,0,0.5)] space-y-10 text-white backdrop-blur-3xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 opacity-50" />
+
+                        <div className="flex items-center gap-6 mb-4">
+                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
+                                <MessageSquare className="w-6 h-6 text-primary" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase tracking-tighter italic">TRIMITE UN MESAJ</h2>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-8">
-                            <div className="space-y-2">
-                                <label className="text-[10px] text-black/40 uppercase tracking-[0.2em] font-black ml-1">NUME COMPLET</label>
+                        <div className="grid sm:grid-cols-2 gap-10">
+                            <div className="space-y-3">
+                                <label className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-black ml-1">NUME COMPLET</label>
                                 <input
                                     type="text"
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-[#F9F9F9] border border-black/5 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-[#2F5233] transition-all font-bold uppercase tracking-tight"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all font-bold uppercase tracking-widest placeholder:text-white/10 outline-none"
                                     placeholder="INTRODU NUMELE TĂU"
                                 />
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-[10px] text-black/40 uppercase tracking-[0.2em] font-black ml-1">ADRESĂ EMAIL</label>
+                            <div className="space-y-3">
+                                <label className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-black ml-1">ADRESĂ EMAIL</label>
                                 <input
                                     type="email"
                                     required
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-[#F9F9F9] border border-black/5 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-[#2F5233] transition-all font-bold uppercase tracking-tight"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all font-bold uppercase tracking-widest placeholder:text-white/10 outline-none"
                                     placeholder="EMAIL@EXEMPLU.COM"
                                 />
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] text-black/40 uppercase tracking-[0.2em] font-black ml-1">SUBIECT</label>
+                        <div className="space-y-3">
+                            <label className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-black ml-1">SUBIECT</label>
                             <input
                                 type="text"
                                 required
                                 value={formData.subject}
                                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                className="w-full bg-[#F9F9F9] border border-black/5 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-[#2F5233] transition-all font-bold uppercase tracking-tight"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all font-bold uppercase tracking-widest placeholder:text-white/10 outline-none"
                                 placeholder="CUM TE PUTEM AJUTA?"
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] text-black/40 uppercase tracking-[0.2em] font-black ml-1">MESAJUL TĂU</label>
+                        <div className="space-y-3">
+                            <label className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-black ml-1">MESAJUL TĂU</label>
                             <textarea
                                 required
                                 rows={6}
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                className="w-full bg-[#F9F9F9] border border-black/5 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-[#2F5233] transition-all font-bold uppercase tracking-tight resize-none"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all font-bold uppercase tracking-widest placeholder:text-white/10 outline-none resize-none"
                                 placeholder="SCRIE MESAJUL TĂU AICI..."
                             />
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full btn-primary py-6 rounded-xl flex items-center justify-center gap-3 active:scale-[0.98]"
+                            className="w-full btn-primary py-7 rounded-2xl flex items-center justify-center gap-4 active:scale-[0.98] transition-all hover:shadow-[0_20px_40px_rgba(76,175,80,0.3)]"
                         >
                             {submitted ? (
-                                <span className="uppercase tracking-[0.2em]">✓ MESAJ TRIMIS CU SUCCES</span>
+                                <span className="uppercase tracking-[0.3em] font-black">✓ MESAJ TRIMIS CU SUCCES</span>
                             ) : (
                                 <>
-                                    <Send className="w-5 h-5" /> <span className="uppercase tracking-[0.2em] font-black">TRIMITE MESAJUL</span>
+                                    <Send className="w-6 h-6 stroke-[2]" /> <span className="uppercase tracking-[0.3em] font-black">TRIMITE MESAJUL</span>
                                 </>
                             )}
                         </button>

@@ -56,7 +56,7 @@ export default function TermsPage() {
                 </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {sections.map((section, idx) => (
                     <motion.div
                         key={section.title}
@@ -64,28 +64,30 @@ export default function TermsPage() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ delay: idx * 0.05 }}
                         viewport={{ once: true }}
-                        className="bg-white border border-white/5 rounded-2xl p-10 shadow-xl group hover:border-[#2F5233]/30 transition-all"
+                        className="bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl group hover:border-primary/30 hover:bg-white/[0.08] transition-all duration-500 backdrop-blur-md relative overflow-hidden"
                     >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-10 h-10 bg-[#F5F5F5] rounded-lg flex items-center justify-center group-hover:bg-[#2F5233] transition-colors">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center gap-6 mb-8 relative z-10">
+                            <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                                 {idx % 2 === 0 ? (
-                                    <Scale className="w-4 h-4 text-black group-hover:text-white transition-colors" />
+                                    <Scale className="w-6 h-6 text-white group-hover:text-white transition-colors stroke-[1.5]" />
                                 ) : (
-                                    <FileText className="w-4 h-4 text-black group-hover:text-white transition-colors" />
+                                    <FileText className="w-6 h-6 text-white group-hover:text-white transition-colors stroke-[1.5]" />
                                 )}
                             </div>
-                            <h2 className="text-lg font-black uppercase tracking-widest italic text-black">{section.title}</h2>
+                            <h2 className="text-xl font-black uppercase tracking-tighter italic text-white/90 group-hover:text-primary transition-colors">{section.title}</h2>
                         </div>
-                        <p className="text-black/60 text-sm leading-relaxed font-medium">{section.content}</p>
+                        <p className="text-white/40 text-sm leading-relaxed font-medium uppercase tracking-wide relative z-10">{section.content}</p>
                     </motion.div>
                 ))}
             </div>
 
-            <div className="mt-20 p-12 bg-white border border-white/5 rounded-3xl text-center shadow-2xl">
-                <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <div className="mt-24 p-16 bg-white/5 border border-white/10 rounded-[2.5rem] text-center backdrop-blur-3xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-primary/5 blur-[100px] -z-10" />
+                <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em] mb-6">
                     PANDAMA LABS SRL · BUCUREȘTI, ROMÂNIA
                 </p>
-                <p className="text-black text-xs font-bold uppercase tracking-widest">
+                <p className="text-white text-xs font-black uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed italic">
                     UTILIZAREA ACESTUI SITE IMPLICĂ ACCEPTAREA NEECHOVOCĂ A TERMENILOR DE MAI SUS.
                 </p>
             </div>

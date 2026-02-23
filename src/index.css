@@ -54,19 +54,19 @@
   }
 
   .product-card {
-    @apply bg-white rounded-lg p-6 flex flex-col items-center text-center shadow-xl hover:-translate-y-1 transition-transform;
+    @apply bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center shadow-xl hover:-translate-y-1 transition-all backdrop-blur-md;
   }
 
   .product-card h3 {
-    @apply text-black font-bold text-lg mb-2;
+    @apply text-white font-black uppercase tracking-tighter text-lg mb-2;
   }
 
   .product-card .price {
-    @apply text-slate-500 text-sm mb-4;
+    @apply text-white/40 font-bold italic text-sm mb-4;
   }
 
   .btn-details {
-    @apply bg-[#2F5233] text-white px-4 py-2 rounded text-xs font-bold w-full uppercase flex items-center justify-center gap-1;
+    @apply bg-primary text-white px-6 py-2 rounded-xl text-[10px] font-black w-full uppercase flex items-center justify-center gap-1 transition-all shadow-[0_10px_20px_rgba(76, 175, 80, 0.2)] hover:scale-[1.02];
   }
 }
 

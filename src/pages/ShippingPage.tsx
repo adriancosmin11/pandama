@@ -54,9 +54,9 @@ export default function ShippingPage() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.1 + idx * 0.1 }}
                         viewport={{ once: true }}
-                        className="bg-white border border-white/5 rounded-3xl p-10 shadow-xl group hover:border-[#2F5233]/30 transition-all text-black"
+                        className="bg-white/5 border border-white/10 rounded-3xl p-10 shadow-2xl group hover:border-[#2F5233]/30 transition-all text-black"
                     >
-                        <div className="w-14 h-14 bg-[#F5F5F5] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#2F5233] transition-colors">
+                        <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
                             <method.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" />
                         </div>
                         <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-2">{method.name}</h3>
@@ -68,20 +68,21 @@ export default function ShippingPage() {
             </div>
 
             {/* Info Sections */}
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid md:grid-cols-2 gap-16">
                 <motion.div
                     initial={{ x: -20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    className="space-y-6"
+                    className="space-y-8"
                 >
-                    <div className="flex items-center gap-4 mb-2">
-                        <div className="h-[1px] w-8 bg-primary" />
-                        <h2 className="text-2xl font-black uppercase tracking-widest italic">PROCESARE</h2>
+                    <div className="flex items-center gap-6 mb-2">
+                        <div className="h-[2px] w-12 bg-primary rounded-full shadow-[0_0_15px_rgba(76,175,80,0.5)]" />
+                        <h2 className="text-3xl font-black uppercase tracking-tighter italic">PROCESARE</h2>
                     </div>
-                    <div className="bg-white/5 border border-white/5 rounded-3xl p-10 text-white/40 text-sm font-medium leading-loose space-y-6">
-                        <p>COMERZILE PLASATE ÎNAINTE DE ORA 14:00 SUNT PROCESATE ÎN ACEEAȘI ZI LUCRĂTOARE. EXPERIENȚA PANDAMA ÎNCEPE CU O LOGISTICĂ EFICIENTĂ.</p>
-                        <p>VEI PRIMI UN EMAIL DE CONFIRMARE CU NUMĂRUL DE TRACKING IMEDIAT CE COLETUL A FOST PREDAT CURIERULUI.</p>
+                    <div className="bg-white/5 border border-white/10 rounded-[2.5rem] p-12 text-white/40 text-xs font-black uppercase tracking-[0.3em] leading-loose space-y-8 backdrop-blur-3xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-1 h-full bg-primary/20" />
+                        <p>COMENZILE PLASATE ÎNAINTE DE ORA 14:00 SUNT PROCESATE ÎN ACEEAȘI ZI LUCRĂTOARE. EXPERIENȚA PANDAMA ÎNCEPE CU O LOGISTICĂ EFICIENTĂ.</p>
+                        <p className="text-white/20">VEI PRIMI UN EMAIL DE CONFIRMARE CU NUMĂRUL DE TRACKING IMEDIAT CE COLETUL A FOST PREDAT CURIERULUI.</p>
                     </div>
                 </motion.div>
 
@@ -89,15 +90,16 @@ export default function ShippingPage() {
                     initial={{ x: 20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    className="space-y-6"
+                    className="space-y-8"
                 >
-                    <div className="flex items-center gap-4 mb-2">
-                        <div className="h-[1px] w-8 bg-primary" />
-                        <h2 className="text-2xl font-black uppercase tracking-widest italic">RETURNĂRI</h2>
+                    <div className="flex items-center gap-6 mb-2">
+                        <div className="h-[2px] w-12 bg-primary rounded-full shadow-[0_0_15px_rgba(76,175,80,0.5)]" />
+                        <h2 className="text-3xl font-black uppercase tracking-tighter italic">RETURNĂRI</h2>
                     </div>
-                    <div className="bg-white/5 border border-white/5 rounded-3xl p-10 text-white/40 text-sm font-medium leading-loose space-y-6">
+                    <div className="bg-white/5 border border-white/10 rounded-[2.5rem] p-12 text-white/40 text-xs font-black uppercase tracking-[0.3em] leading-loose space-y-8 backdrop-blur-3xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-1 h-full bg-primary/20" />
                         <p>ACCEPTIĂM RETURNĂRI ÎN TERMEN DE 14 ZILE DE LA PRIMIREA PRODUSULUI. PRODUSUL TREBUIE SĂ FIE ÎN STAREA ORIGINALĂ, NEFOLOSIT ȘI CU ETICHETELE ATAȘATE.</p>
-                        <p>PENTRU A INIȚIA O RETURNARE, CONTACTEAZĂ-NE LA <span className="text-primary">SUPPORT@PANDAMA.RO</span> CU NUMĂRUL COMENZII.</p>
+                        <p className="text-white/20">PENTRU A INIȚIA O RETURNARE, CONTACTEAZĂ-NE LA <span className="text-primary italic">SUPPORT@PANDAMA.RO</span> CU NUMĂRUL COMENZII.</p>
                     </div>
                 </motion.div>
             </div>

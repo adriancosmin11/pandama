@@ -29,19 +29,23 @@ export default function AccessoriesPage() {
                 ].map((item, idx) => (
                     <motion.div
                         key={item.name}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-white rounded-2xl p-10 text-black shadow-2xl group hover:-translate-y-2 transition-transform cursor-pointer"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.1, duration: 0.5 }}
+                        className="bg-white/5 border border-white/10 rounded-3xl p-10 text-white shadow-2xl group hover:-translate-y-2 transition-all duration-500 backdrop-blur-md relative overflow-hidden"
                     >
-                        <div className="w-full aspect-square bg-[#F5F5F5] rounded-xl mb-8 flex items-center justify-center relative overflow-hidden">
-                            <ShoppingBag className="w-12 h-12 text-black/5" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="w-full aspect-square bg-white/[0.03] rounded-2xl mb-10 flex items-center justify-center relative overflow-hidden">
+                            <ShoppingBag className="w-16 h-16 text-white/5 group-hover:text-primary/20 group-hover:scale-110 transition-all duration-500" />
+                            <div className="absolute inset-0 bg-primary/10 blur-[60px] opacity-0 group-hover:opacity-50 transition-opacity" />
                         </div>
-                        <span className="text-[9px] font-black tracking-widest text-black/20 uppercase mb-2 block">{item.type}</span>
-                        <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-4">{item.name}</h3>
-                        <div className="flex items-center justify-between border-t border-black/5 pt-6">
-                            <span className="text-xl font-black italic">{item.price}</span>
-                            <ChevronRight className="w-5 h-5 text-black/20 group-hover:text-primary transition-colors" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-3 block">{item.type}</span>
+                        <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-6 group-hover:text-primary transition-colors">{item.name}</h3>
+                        <div className="flex items-center justify-between border-t border-white/5 pt-8">
+                            <span className="text-2xl font-black italic tracking-tighter text-white/90">{item.price}</span>
+                            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                                <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                            </div>
                         </div>
                     </motion.div>
                 ))}

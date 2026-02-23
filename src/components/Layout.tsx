@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Search, ShoppingCart, User, Menu, X, Instagram } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
 import mistBg from '@/src/assets/mist-bg.png';
@@ -40,8 +40,8 @@ export default function Layout() {
             <nav className="sticky top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 py-4">
                 <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                     {/* Logo Section */}
-                    <Link to="/" className="flex items-center gap-4 shrink-0 group">
-                        <div className="w-12 h-12 relative flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
+                    <Link to="/" className="flex items-center gap-3 md:gap-4 shrink-0 group">
+                        <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
                             <div className="w-8 h-8 flex items-center justify-center">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white group-hover:text-primary transition-colors">
                                     <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" fill="currentColor" opacity="0.2" />
@@ -51,8 +51,8 @@ export default function Layout() {
                             </div>
                         </div>
                         <div className="flex flex-col leading-none">
-                            <span className="text-2xl font-black tracking-tighter text-white uppercase italic group-hover:text-primary transition-colors">PANDAMA</span>
-                            <span className="text-[8px] font-black tracking-[0.3em] text-white/40 uppercase mt-0.5">Premium Kendamas</span>
+                            <span className="text-lg md:text-2xl font-black tracking-tighter text-white uppercase italic group-hover:text-primary transition-colors">PANDAMA</span>
+                            <span className="hidden sm:block text-[8px] font-black tracking-[0.3em] text-white/40 uppercase mt-0.5">Premium Kendamas</span>
                         </div>
                     </Link>
 
@@ -73,8 +73,8 @@ export default function Layout() {
                     </div>
 
                     {/* Action Icons */}
-                    <div className="flex items-center gap-5">
-                        <button className="text-white hover:text-primary transition-colors">
+                    <div className="flex items-center gap-3 md:gap-5">
+                        <button className="hidden xs:block text-white hover:text-primary transition-colors">
                             <Search className="w-6 h-6 stroke-[1.5]" />
                         </button>
                         <button className="text-white hover:text-primary transition-colors">
@@ -102,26 +102,49 @@ export default function Layout() {
                 </div>
 
                 {/* Mobile Menu */}
-                {mobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/5 mt-4"
-                    >
-                        <div className="flex flex-col p-6 gap-6">
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    to={item.path}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`text-lg font-bold uppercase tracking-widest ${location.pathname === item.path ? 'text-primary' : 'text-white'}`}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
+                <AnimatePresence>
+                    {mobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 1.1 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.05 }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex flex-col justify-center items-center p-10"
+                        >
+                            <button
+                                className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <X className="w-10 h-10 stroke-[1.2]" />
+                            </button>
+
+                            <div className="flex flex-col items-center gap-10">
+                                {navItems.map((item, idx) => (
+                                    <motion.div
+                                        key={item.label}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            className="text-4xl font-black uppercase tracking-tighter italic hover:text-primary transition-colors text-white"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            <div className="absolute bottom-12 flex gap-8">
+                                <Instagram className="w-6 h-6 text-white/40" />
+                                <Search className="w-6 h-6 text-white/40" />
+                                <User className="w-6 h-6 text-white/40" />
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
             <main className="relative z-10 min-h-[calc(100vh-80px-300px)]">

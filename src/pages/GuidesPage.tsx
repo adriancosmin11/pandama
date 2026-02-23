@@ -28,21 +28,28 @@ export default function GuidesPage() {
                 ].map((guide, idx) => (
                     <motion.div
                         key={guide.title}
-                        initial={{ opacity: 0, x: idx === 0 ? -20 : 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="bg-white p-10 md:p-16 rounded-3xl text-black shadow-2xl relative overflow-hidden group cursor-pointer"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.1, duration: 0.6 }}
+                        className="bg-white/5 border border-white/10 p-12 md:p-20 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group cursor-pointer backdrop-blur-3xl"
                     >
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <div className="relative z-10">
-                            <div className="flex items-center gap-4 mb-8">
-                                <guide.icon className="w-8 h-8 text-[#2F5233]" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/20">{guide.level}</span>
+                            <div className="flex items-center gap-6 mb-12">
+                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:scale-110 transition-all">
+                                    <guide.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors stroke-[1.2]" />
+                                </div>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/30">{guide.level}</span>
                             </div>
-                            <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none">
+                            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 leading-none group-hover:text-primary/90 transition-colors">
                                 {guide.title}
                             </h2>
-                            <div className="flex items-center justify-between border-t border-black/5 pt-10">
-                                <span className="text-[10px] font-black uppercase tracking-widest text-[#2F5233]">START CURS</span>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-black/20">{guide.duration} VIDEO CONTENT</span>
+                            <div className="flex items-center justify-between border-t border-white/5 pt-12">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 bg-primary animate-pulse rounded-full" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">START CURS</span>
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">{guide.duration} DE CONȚINUT</span>
                             </div>
                         </div>
                     </motion.div>
