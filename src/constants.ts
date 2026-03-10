@@ -14,6 +14,7 @@ export interface Product {
   sku: string;
   specs: string[];
   color?: string;
+  variantId?: string; // Shopify variant GID for checkout
 }
 
 export const PRODUCTS: Product[] = [

@@ -1,8 +1,9 @@
 import { useState, useEffect, type MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingCart, SlidersHorizontal, X, CheckCircle2, Heart, ChevronRight, ArrowUpDown } from 'lucide-react';
-import { PRODUCTS, type Product } from '../constants';
+import { type Product } from '../constants';
 import { useCart } from '../context/CartContext';
+import { useShopifyProducts } from '../hooks/useShopifyProducts';
 
 type Category = 'All' | Product['category'];
 type SortBy = 'default' | 'price-asc' | 'price-desc';
@@ -12,6 +13,7 @@ export default function ShopPage() {
     const [sortBy, setSortBy] = useState<SortBy>('default');
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const { addToCart } = useCart();
+    const { products: PRODUCTS, loading } = useShopifyProducts();
 
     const handleAddToCart = (product: Product, e?: MouseEvent) => {
         if (e) e.stopPropagation();
@@ -86,6 +88,17 @@ export default function ShopPage() {
             </motion.div>
 
             {/* Product Grid */}
+            {loading && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mb-10">
+                    {[...Array(4)].map((_, i) => (
+                        <div key={i} className="bg-white/5 border border-white/10 rounded-[2rem] p-8 animate-pulse">
+                            <div className="w-full aspect-square mb-8 bg-white/[0.03] rounded-2xl" />
+                            <div className="h-5 bg-white/10 rounded w-3/4 mb-3" />
+                            <div className="h-4 bg-white/5 rounded w-1/2" />
+                        </div>
+                    ))}
+                </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                 {filtered.map((product, idx) => (
                     <motion.div

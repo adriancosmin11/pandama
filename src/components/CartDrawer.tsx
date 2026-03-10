@@ -3,7 +3,7 @@ import { X, Plus, Minus, Trash2, ShoppingBag, Bolt } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 export default function CartDrawer() {
-    const { items, isOpen, closeCart, totalItems, totalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
+    const { items, isOpen, closeCart, totalItems, totalPrice, updateQuantity, removeFromCart, clearCart, isCheckingOut, checkout } = useCart();
 
     return (
         <AnimatePresence>
@@ -124,8 +124,12 @@ export default function CartDrawer() {
                                         <span className="text-slate-400 text-sm uppercase tracking-widest font-bold">Total</span>
                                         <span className="text-2xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
                                     </div>
-                                    <button className="w-full bg-primary text-black font-bold py-4 rounded-full text-lg hover:brightness-110 transition-all neon-glow-primary active:scale-[0.98]">
-                                        FINALIZEAZĂ COMANDA — ${totalPrice.toFixed(0)}
+                                    <button
+                                        onClick={checkout}
+                                        disabled={isCheckingOut}
+                                        className="w-full bg-primary text-black font-bold py-4 rounded-full text-lg hover:brightness-110 transition-all neon-glow-primary active:scale-[0.98] disabled:opacity-50 disabled:cursor-wait"
+                                    >
+                                        {isCheckingOut ? 'SE PROCESEAZĂ...' : `FINALIZEAZĂ COMANDA — $${totalPrice.toFixed(0)}`}
                                     </button>
                                     <button
                                         onClick={clearCart}
