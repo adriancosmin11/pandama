@@ -88,6 +88,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
             return;
         }
 
+        // Ensure all items are available for sale
+        const unavailableItem = items.find(i => !i.product.availableForSale);
+        if (unavailableItem) {
+            alert(`Produsul "${unavailableItem.product.name}" nu mai este în stoc. Te rugăm să îl elimini din coș înainte de a finaliza comanda.`);
+            return;
+        }
+
         setIsCheckingOut(true);
         try {
             const lineItems = items.map(item => ({

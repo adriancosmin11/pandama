@@ -27,6 +27,7 @@ function shopifyToProduct(sp: ShopifyProduct): Product {
         sku: variant?.sku ?? '',
         specs: sp.tags.length > 0 ? sp.tags : [],
         variantId: variant?.id ?? '',
+        availableForSale: variant?.availableForSale ?? false,
     };
 }
 

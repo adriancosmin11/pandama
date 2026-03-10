@@ -82,7 +82,10 @@ export default function CartDrawer() {
                                             {/* Details */}
                                             <div className="flex-1 min-w-0">
                                                 <h4 className="text-sm font-bold uppercase tracking-tight italic truncate">{item.product.name}</h4>
-                                                <p className="text-xs text-slate-500 mb-2">{item.product.category}</p>
+                                                <p className="text-xs text-slate-500 mb-1">{item.product.category}</p>
+                                                {!item.product.availableForSale && (
+                                                    <p className="text-[10px] font-bold text-red-500 uppercase tracking-tighter mb-2 italic">Stoc Epuizat</p>
+                                                )}
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
                                                         <button
