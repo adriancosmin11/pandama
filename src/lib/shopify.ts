@@ -76,14 +76,14 @@ const GET_PRODUCTS_QUERY = `
   }
 `;
 
-const CREATE_CHECKOUT_MUTATION = `
-  mutation checkoutCreate($input: CheckoutCreateInput!) {
-    checkoutCreate(input: $input) {
-      checkout {
+const CREATE_CART_MUTATION = `
+  mutation cartCreate($input: CartInput!) {
+    cartCreate(input: $input) {
+      cart {
         id
-        webUrl
+        checkoutUrl
       }
-      checkoutUserErrors {
+      userErrors {
         code
         field
         message
@@ -162,20 +162,25 @@ export async function createCheckout(
   lineItems: CheckoutLineItem[]
 ): Promise<string> {
   const data = await shopifyFetch({
-    query: CREATE_CHECKOUT_MUTATION,
+    query: CREATE_CART_MUTATION,
     variables: {
-      input: { lineItems },
+      input: {
+        lines: lineItems.map((item) => ({
+          merchandiseId: item.variantId,
+          quantity: item.quantity,
+        })),
+      },
     },
   });
 
-  const { checkout, checkoutUserErrors } = data.data.checkoutCreate;
+  const { cart, userErrors } = data.data.cartCreate;
 
-  if (checkoutUserErrors && checkoutUserErrors.length > 0) {
-    console.error("Checkout Errors:", checkoutUserErrors);
-    throw new Error(checkoutUserErrors[0].message);
+  if (userErrors && userErrors.length > 0) {
+    console.error("Cart Create Errors:", userErrors);
+    throw new Error(userErrors[0].message);
   }
 
-  return checkout.webUrl;
+  return cart.checkoutUrl;
 }
 
 /**
