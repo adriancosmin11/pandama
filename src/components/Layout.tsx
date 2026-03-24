@@ -23,17 +23,19 @@ export default function Layout() {
     return (
         <div className="min-h-screen relative bg-black selection:bg-primary selection:text-white">
             {/* Background Mist Effect */}
-            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" style={{ contain: 'strict' }}>
                 <StarField />
                 <img
                     src={mistBg}
                     alt=""
+                    loading="eager"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover opacity-30 sm:opacity-10 sm:mix-blend-screen scale-110"
                 />
                 <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] opacity-40 sm:opacity-15"
                     style={{
                         background: 'radial-gradient(circle at 50% 30%, #2F5233 0%, transparent 60%)',
-                        filter: 'blur(100px)'
+                        filter: 'blur(40px)'
                     }}
                 />
             </div>

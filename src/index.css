@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -73,5 +73,15 @@
 @layer utilities {
   .text-gradient-gold {
     @apply bg-gradient-to-r from-[#FACC15] to-[#EAB308] bg-clip-text text-transparent;
+  }
+}
+
+/* Respect user's motion preference — also reduces GPU pressure on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

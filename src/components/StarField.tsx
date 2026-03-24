@@ -8,13 +8,19 @@ interface Star {
     py: number;
 }
 
-const NUM_STARS = 180;
+const NUM_STARS = 140;
 const SPEED = 6;
+
+// Skip the animation entirely on phones/tablets — it is GPU-heavy on mobile.
+const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches;
 
 export default function StarField() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
+        // Don't mount on mobile — saves the entire rAF loop.
+        if (isMobile) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
@@ -43,11 +49,14 @@ export default function StarField() {
         }
 
         function draw() {
-            ctx!.fillStyle = 'rgba(0, 0, 0, 0)';
             ctx!.clearRect(0, 0, W, H);
 
             const cx = W / 2;
             const cy = H / 2;
+
+            // Set shadow once per frame instead of per-star.
+            ctx!.shadowColor = '#39FF50';
+            ctx!.shadowBlur = 8;
 
             for (const s of stars) {
                 s.px = (s.x / s.z) * W + cx;
@@ -76,30 +85,39 @@ export default function StarField() {
                 ctx!.beginPath();
                 ctx!.arc(sx, sy, size, 0, Math.PI * 2);
                 ctx!.fillStyle = `rgba(57, 255, 80, ${alpha})`;
-                ctx!.shadowColor = '#39FF50';
-                ctx!.shadowBlur = 8;
                 ctx!.fill();
-                ctx!.shadowBlur = 0;
             }
+
+            // Reset shadow so it doesn't bleed into other canvas operations.
+            ctx!.shadowBlur = 0;
 
             animId = requestAnimationFrame(draw);
         }
 
         draw();
 
+        // Debounced resize to avoid thrashing during window drag.
+        let resizeTimer: ReturnType<typeof setTimeout>;
         const handleResize = () => {
-            W = window.innerWidth;
-            H = window.innerHeight;
-            canvas.width = W;
-            canvas.height = H;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                W = window.innerWidth;
+                H = window.innerHeight;
+                canvas.width = W;
+                canvas.height = H;
+            }, 150);
         };
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize, { passive: true });
 
         return () => {
             cancelAnimationFrame(animId);
+            clearTimeout(resizeTimer);
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    // Return null on mobile — no canvas element at all.
+    if (isMobile) return null;
 
     return (
         <canvas
