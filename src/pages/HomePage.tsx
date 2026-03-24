@@ -36,9 +36,9 @@ export default function HomePage() {
                     <img
                         src={mistBg}
                         alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen scale-110"
+                        className="absolute inset-0 w-full h-full object-cover opacity-100 sm:opacity-60 sm:mix-blend-screen scale-110"
                     />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] opacity-40 mix-blend-screen"
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] opacity-80 sm:opacity-40 sm:mix-blend-screen"
                         style={{
                             background: 'radial-gradient(circle at 60% 40%, #2F5233 0%, rgba(20, 20, 20, 0) 70%)',
                             filter: 'blur(120px)'

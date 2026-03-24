@@ -26,9 +26,9 @@ export default function Layout() {
                 <img
                     src={mistBg}
                     alt=""
-                    className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-screen scale-110"
+                    className="absolute inset-0 w-full h-full object-cover opacity-30 sm:opacity-10 sm:mix-blend-screen scale-110"
                 />
-                <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] opacity-15"
+                <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] opacity-40 sm:opacity-15"
                     style={{
                         background: 'radial-gradient(circle at 50% 30%, #2F5233 0%, transparent 60%)',
                         filter: 'blur(100px)'
