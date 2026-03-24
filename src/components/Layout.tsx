@@ -5,6 +5,7 @@ import { Search, ShoppingCart, User, Menu, X, Instagram } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
 import mistBg from '@/src/assets/mist-bg.png';
+import StarField from './StarField';
 
 export default function Layout() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function Layout() {
         <div className="min-h-screen relative bg-black selection:bg-primary selection:text-white">
             {/* Background Mist Effect */}
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+                <StarField />
                 <img
                     src={mistBg}
                     alt=""
